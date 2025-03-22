@@ -78,10 +78,10 @@ try {
 
     $sql6 = "CREATE TABLE IF NOT EXISTS `visa_cards` (
         `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-        `c_number` varchar(100) NOT NULL , 
-        `ex_month` varchar(100) NOT NULL ,
-        `ex_year` varchar(100) NOT NULL ,
-        `cvv` varchar(100) NOT NULL ,
+        `c_number` varchar(100)  NULL , 
+        `ex_month` varchar(100)  NULL ,
+        `ex_year` varchar(100)  NULL ,
+        `cvv` varchar(100)  NULL ,
         `c_holder` varchar(100) NULL ,
         `created_at` varchar(100) NULL ,
         `u_id` varchar(100) NOT NULL ,
