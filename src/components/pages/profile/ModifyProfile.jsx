@@ -164,6 +164,29 @@ function ModifyProfile(props) {
     } else props.toast("error", "Invalid Card Information");
   };
 
+  const handleDeleteCard = async (_) => {
+    let filter = ordersData.filter((order) => order.status == "pending");
+    if (filter.length > 0) {
+      props.toast("warning", "You have pending orders");
+      return;
+    } else {
+      let formData = new FormData();
+      formData.append("u_id", mainInfo.id);
+      await axios.post(
+        `${import.meta.env.VITE_API_HOST}/visa card/delete_visa.php`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      dispatch(get_visa_details(mainInfo.id));
+      props.toast("success", "Card Deleted Successfully");
+    }
+  };
+
   return (
     <Container className="modify-profile">
       <Stack
@@ -274,7 +297,9 @@ function ModifyProfile(props) {
           {visa_details?.c_number ? "Edit Card" : "add card"}
         </button>
         {visa_details?.c_number ? (
-          <button className="remove">delete card</button>
+          <button onClick={handleDeleteCard} className="remove">
+            delete card
+          </button>
         ) : null}
       </div>
 

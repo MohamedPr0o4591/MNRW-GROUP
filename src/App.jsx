@@ -73,7 +73,10 @@ function App() {
               element={<ProfilePage toast={handleToast} />}
             />
 
-            <Route path="/profile/edit/:id" element={<EditProfile />} />
+            <Route
+              path="/profile/edit/:id"
+              element={<EditProfile toast={handleToast} />}
+            />
 
             {/* Admin page */}
             <Route path="/admin" element={<Dashboard setMode={setMode} />}>
