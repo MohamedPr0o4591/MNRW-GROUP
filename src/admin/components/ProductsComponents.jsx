@@ -3,6 +3,8 @@ import "./components.css";
 import { useDispatch, useSelector } from "react-redux";
 import { get_companies, get_pro } from "../../redux/action/actions";
 import axios from "axios";
+import { IconButton, Stack } from "@mui/material";
+import { DeleteRounded } from "@mui/icons-material";
 
 function ProductsComponents(props) {
   let proData = useSelector((state) => state.GET_PRODUCTS.pro);
@@ -24,6 +26,7 @@ function ProductsComponents(props) {
     p_name: "",
     p_desc: "",
     p_price: "",
+    p_id: null,
   };
   const [ProductInfo, setProductInfo] = useState(initialPro);
 
@@ -64,13 +67,64 @@ function ProductsComponents(props) {
 
       if (res.data.status == 200) {
         props.toast("success", "Product Added Successfully");
-        setProductInfo(initialPro);
-        setImgFile(null);
-        setImgReader(null);
       }
+    } else {
+      formData.append("img", imgFile);
+      formData.append("id", ProductInfo.p_id);
+      formData.append("name", ProductInfo.p_name);
+      formData.append("price", ProductInfo.p_price);
+      formData.append("desc", ProductInfo.p_desc);
+      formData.append("company_id", companyId);
+
+      await axios.post(
+        `${import.meta.env.VITE_API_HOST}/products/edit_pro.php`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      props.toast("success", "Product Updated Successfully");
+      setMode("create");
     }
 
+    setProductInfo(initialPro);
+    setImgFile(null);
+    setImgReader(null);
     dispatch(get_pro());
+  };
+
+  const handleDelete = async (id) => {
+    await axios.delete(
+      `${import.meta.env.VITE_API_HOST}/products/delete_pro.php?id=${id}`
+    );
+
+    props.toast("success", "Deleted Successfully");
+    dispatch(get_pro());
+  };
+
+  const scroll = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleUpdate = (id) => {
+    let filtered = proData.find((data) => data.id == id);
+    setProductInfo({
+      p_name: filtered.name,
+      p_desc: filtered.desc,
+      p_price: filtered.price,
+      p_id: filtered.id,
+    });
+
+    setImgReader(`${import.meta.env.VITE_API_HOST}/upload/${filtered.img}`);
+    setImgFile(filtered.img);
+    setCompanyId(filtered.company_id);
+
+    setMode("update");
+
+    scroll();
   };
 
   return (
@@ -151,7 +205,13 @@ function ProductsComponents(props) {
           />
         </div>
 
-        <input type="submit" value="Add Product" />
+        <input
+          type="submit"
+          value={`${mode == "create" ? "Add Product" : "Update"}`}
+          style={{
+            backgroundColor: mode == "create" ? "" : "#0a0",
+          }}
+        />
       </form>
 
       <br />
@@ -191,7 +251,28 @@ function ProductsComponents(props) {
                     <td>{(+data.price)?.toLocaleString("en-US")}</td>
                     <td>{data.category}</td>
                     <td>{data.company}</td>
-                    <td>action</td>
+                    <td>
+                      <Stack
+                        direction={"row"}
+                        alignItems={"center"}
+                        gap={1}
+                        className="action-btn"
+                      >
+                        <IconButton
+                          color="inherit"
+                          onClick={(_) => handleUpdate(data.id)}
+                        >
+                          update
+                        </IconButton>
+
+                        <IconButton
+                          color="inherit"
+                          onClick={(_) => handleDelete(data.id)}
+                        >
+                          <DeleteRounded />
+                        </IconButton>
+                      </Stack>
+                    </td>
                   </tr>
                 );
               })}

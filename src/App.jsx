@@ -60,7 +60,10 @@ function App() {
             <Route path="/" element={<HomePage toast={handleToast} />} />
             <Route path="/registration">
               <Route index element={<LoginPage toast={handleToast} />} />
-              <Route path="forget" element={<ForgetPassword />} />
+              <Route
+                path="forget"
+                element={<ForgetPassword toast={handleToast} />}
+              />
               <Route
                 path="create"
                 element={<CreateAccount toast={handleToast} />}

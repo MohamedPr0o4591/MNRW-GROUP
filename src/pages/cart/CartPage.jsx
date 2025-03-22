@@ -55,6 +55,7 @@ function CartPage(props) {
     let pro = JSON.parse(localStorage.getItem("products"));
     let token =
       sessionStorage.getItem("token") || localStorage.getItem("token");
+
     let formData = new FormData();
     let formData2 = new FormData();
     let price = 0;
@@ -200,7 +201,17 @@ function CartPage(props) {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={(_) => setAddressOpen(true)}
+                onClick={(_) => {
+                  let token =
+                    sessionStorage.getItem("token") ||
+                    localStorage.getItem("token");
+                  if (!token) {
+                    nav("/registration");
+                    return;
+                  }
+
+                  setAddressOpen(true);
+                }}
               >
                 continue shopping
               </Button>

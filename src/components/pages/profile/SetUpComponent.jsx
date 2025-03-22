@@ -63,6 +63,7 @@ function SetUpComponent(props) {
           reader: "",
           file: "",
         });
+        location.reload();
       } else {
         props.toast("error", "Something went wrong");
       }

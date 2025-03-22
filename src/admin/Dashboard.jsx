@@ -52,19 +52,20 @@ export default function Dashboard(props) {
 
   React.useEffect(() => {
     document.title = "Admin Dashboard";
+    let token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
 
     location.pathname == "/admin" && nav("/admin/products");
 
-    if (!localStorage.token && !sessionStorage.token) {
+    if (!token) {
       nav("/");
-    } else {
-      dispatch(get_userdata_token(localStorage.token));
-
-      // if (Object.keys(userData).length == 0) {
-      //   nav("/");
-      // }
-    }
+    } else dispatch(get_userdata_token(token));
   }, []);
+
+  React.useEffect(() => {
+    if (Object.values(userData).length > 0 && userData.status != "admin")
+      nav("/");
+  }, [userData]);
 
   return (
     <div className="dashboard">
