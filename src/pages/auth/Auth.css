@@ -1,0 +1,254 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration > div {
+  position: relative;
+  color: #000;
+  width: 450px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: #29020242;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.registration form {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  inset: 4px;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration form h2 {
+  font-size: 2em;
+  text-align: center;
+  color: var(--main-color);
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.registration form .input-box {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.registration form .input-box input {
+  position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  letter-spacing: 1px;
+  color: #333;
+  background: transparent;
+  border-bottom: 1px solid #333;
+  z-index: 10;
+}
+
+.registration form .input-box span {
+  position: absolute;
+  left: 0;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #333;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+}
+
+.registration form .input-box input:focus ~ span,
+.registration form .input-box input:valid ~ span {
+  color: var(--main-color);
+  transform: translateX(-10px) translateY(-15px);
+  font-size: 0.75em;
+  padding: 0 10px;
+  letter-spacing: 0.2em;
+}
+
+.registration input[type="submit"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 10px 3rem;
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background-color: var(--main-color);
+}
+
+.registration input[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+.registration input[type="submit"]:active {
+  transform: translateY(2px);
+}
+
+.registration .pass-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registration .more-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.registration .more-option a {
+  color: var(--main-color);
+}
+
+.registration .last {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.remember-box {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.remember-box > input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--main-color);
+}
+
+.remember-box > label {
+  color: var(--main-color);
+  flex: 1;
+}
+
+.remember-box > label::before {
+  content: "Remember me";
+}
+
+.remember-box > input:checked + label::before {
+  content: "Account Remembered";
+}
+
+/* eye */
+[id="submit"] {
+  cursor: pointer;
+  margin: calc(var(--spacer) * 2) 0 0 2px;
+  padding: 0.75rem 1.25rem;
+  color: var(--bgColor);
+  background-color: var(--inputColor);
+  box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
+}
+
+[id="submit"]:active {
+  transform: translateY(1px);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+input.input-value {
+  padding: 0.75rem 4rem 0.75rem 0.75rem;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px black, inset 6px 6px 0 rgba(30, 144, 255, 0.2),
+    3px 3px 0 rgba(30, 144, 255, 0.2);
+  -webkit-appearance: none;
+}
+input.input-value:focus {
+  outline-offset: 1px;
+}
+
+.show-password input.input-value {
+  box-shadow: inset 0 0 0 2px black;
+  border: 2px dashed white;
+}
+.show-password input.input-value:focus {
+  outline: none;
+  border-color: var(--beamColor);
+}
+
+[id="eyeball"] {
+  --size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  border: none;
+  background-color: transparent;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+[id="eyeball"]:active {
+  transform: translateY(calc(-50% + 1px));
+}
+
+.eye {
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid #000000;
+  border-radius: calc(var(--size) / 1.5) 0;
+  transform: rotate(45deg);
+}
+.eye:before,
+.eye:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 100%;
+}
+.eye:before {
+  width: 35%;
+  height: 35%;
+  background-color: var(--inputColor);
+}
+.eye:after {
+  width: 65%;
+  height: 65%;
+  border: 2px solid #000000;
+  border-radius: 100%;
+}
+
+[id="beam"] {
+  position: absolute;
+  top: 50%;
+  right: 1.75rem;
+  clip-path: polygon(100% 50%, 100% 50%, 0 0, 0 100%);
+  width: 100vw;
+  height: 25vw;
+  z-index: 11;
+  mix-blend-mode: multiply;
+  transition: transform 200ms ease-out;
+  transform-origin: 100% 50%;
+  transform: translateY(-50%) rotate(var(--beamDegrees, 0));
+  pointer-events: none;
+}
+.show-password [id="beam"] {
+  background: var(--beamColor);
+}

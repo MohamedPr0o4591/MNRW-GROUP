@@ -1,0 +1,100 @@
+.home-page .categories-box {
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-color);
+}
+
+.home-page ul {
+  display: flex;
+  list-style: none;
+  gap: 2em;
+}
+
+.home-page ul button {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  border-radius: 20px;
+  padding: 0.7em 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.home-page ul button.active {
+  background-color: var(--color-white);
+  color: var(--secondary-color);
+}
+
+.home-page .products-component {
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0px 5%;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 250px !important;
+  height: auto !important;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  height: 250px;
+}
+
+.home-page .card {
+  background: var(--color-white);
+  color: black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.home-page .card > .content {
+  padding: 5px 10px;
+}
+
+.home-page .card > .content h4 {
+  margin: 10px 0;
+}
+
+.home-page .card > .content span {
+  display: block;
+  margin: 10px 0;
+  font-size: 0.9em;
+  opacity: 0.8;
+  text-transform: lowercase;
+}
+
+.home-page .card > .content p {
+  margin: 10px 0;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.home-page .card > .content button {
+  background-color: tomato;
+  color: var(--color-white);
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.home-page .card > .content button:hover {
+  transform: scale(1.04);
+}
+
+.home-page .card > .content button:active {
+  transform: scale(0.98);
+}

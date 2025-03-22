@@ -1,0 +1,199 @@
+.cart-page .cart-container {
+  position: absolute;
+  padding: 20px;
+  border-radius: 10px;
+  height: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-page h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.cart-page .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1.5rem;
+}
+
+.cart-page .inner svg {
+  font-size: 7rem;
+}
+
+.cart-page .inner span {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.cart-page .show-products,
+.cart-page .show-products > div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.cart-page .show-products {
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-page .show-products img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  mix-blend-mode: hard-light;
+}
+
+.cart-page .show-products p {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+.cart-page .show-products button {
+  border: none;
+  outline: none;
+  background-color: #e00;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.cart-page .show-products button:hover {
+  transform: scale(1.1);
+  background-color: #a00;
+}
+
+.cart-page .show-products button:active {
+  transform: scale(0.9);
+  background-color: #a00;
+}
+
+.cart-page .pro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.cart-page .continue-shopping {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.cart-page .buttons-box button.add,
+.cart-page .buttons-box button.minus {
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+}
+
+.cart-page .buttons-box button.add {
+  background-color: #4bb543;
+}
+
+.cart-page .buttons-box button.minus {
+  background-color: #e00;
+}
+
+.cart-page .buttons-box button.add:hover,
+.cart-page .buttons-box button.minus:hover {
+  transform: scale(1.1);
+}
+
+.cart-page .buttons-box button.add:hover {
+  background-color: #3e8e41;
+}
+
+.cart-page .buttons-box button.minus:hover {
+  background-color: #a00;
+}
+
+/* btn */
+
+/*btn*/
+.cssbuttons-io-button {
+  background: #a370f0;
+  color: white;
+  font-family: inherit;
+  padding: 1.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-left: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  background: #035366;
+  margin-right: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  left: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #fff;
+  transform: rotate(180deg);
+  font-size: initial;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em) rotate(180deg);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.back {
+  display: contents;
+}

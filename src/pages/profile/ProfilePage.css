@@ -1,0 +1,363 @@
+.profile-page .profile-container,
+.profile-page .profile-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-page .input-container {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.profile-page .input-container .input-box {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-page .input-container .input-box label {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.profile-page .input-container .input-box input {
+  padding: 10px 20px;
+  background-color: var(--main-color);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  color: var(--color-white);
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.profile-page input[type="submit"] {
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  color: var(--color-white);
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.profile-page input[type="submit"]:hover {
+  background-color: var(--main-color);
+}
+
+.profile-page input[type="submit"]:active {
+  transform: translateY(2px);
+}
+
+.modify-profile strong {
+  font-size: 1.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 0.5rem;
+}
+
+.modify-profile span {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.modify-profile .info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 1rem;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.modify-profile .info > p {
+  flex: 1;
+  text-align: center;
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.profile-page .main-info h2 {
+  text-transform: capitalize;
+}
+
+.profile-page .main-info .username {
+  font-size: 1.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.profile-page .main-info .email {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.card-info {
+  position: relative;
+  width: 450px;
+  height: 260px;
+  margin: auto;
+  border-radius: 10px;
+  perspective: 1000px;
+  color: #fff;
+}
+
+.card-info > section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-info .front,
+.card-info .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+}
+
+.card-info > section::before {
+  content: "";
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 10px solid #ff00ec;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  filter: blur(13px);
+  transform: scale(1.4);
+}
+
+.card-info > section::after {
+  content: "";
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 30px solid #1f7632;
+  position: absolute;
+  bottom: -100px;
+  left: -115px;
+  filter: blur(25px);
+  transform: scale(0.6);
+}
+
+.card-info .front {
+  transform: rotateY(0deg);
+}
+
+.card-info .back {
+  transform: rotateY(180deg);
+  padding: 20px 0 !important;
+}
+
+.card-info:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card-info:hover .back {
+  transform: rotateY(0deg);
+}
+
+.front-flipped {
+  transform: rotateY(180deg) !important;
+}
+
+.back-flipped {
+  transform: rotateY(0deg) !important;
+}
+
+.card-info .front .header {
+  display: flex;
+  gap: 1em;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 700;
+  align-items: center;
+}
+
+.card-info .front img {
+  width: 50px;
+}
+
+.card-info .front .card-number {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.card-info .back .header {
+  width: 100%;
+  background-color: #999;
+  height: 50px;
+  z-index: 1;
+}
+
+.card-info .back .cvv {
+  width: 80%;
+  height: 30px;
+  margin: auto;
+  z-index: 1;
+}
+
+.card-info .back .cvv > p {
+  text-align: end;
+}
+
+.card-info .cvv .input-preview {
+  width: 100%;
+  background-color: #efef;
+  padding: 10px 20px;
+  margin: auto;
+  border-radius: 10px;
+  color: #000;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.btn-box button {
+  position: relative;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  color: var(--color-white);
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+  overflow: hidden;
+  outline: none;
+}
+
+.btn-box button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 80%;
+  box-shadow: 0 0 50px 40px #fff;
+  opacity: 0;
+  transform: skew(-45deg) translateX(-50%);
+}
+
+.btn-box button:hover {
+  color: var(--main-color);
+  transform: scale(1.05);
+}
+
+.btn-box button.modify:hover {
+  background-color: #05ff3b;
+  border: 2px solid #05ff3b;
+  box-shadow: 0 0 15px 0px #05ff3b;
+}
+
+.btn-box button:hover::before {
+  animation: btn-animation 0.7s linear;
+}
+
+.btn-box button:active {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  box-shadow: none;
+  border: 2px solid var(--main-color);
+  transition: 0.3s;
+}
+
+.btn-box button.remove:hover {
+  background-color: #ff0000;
+  border: 2px solid #ff0000;
+  box-shadow: 0px 0px 15px 0px #ff0000;
+}
+
+@keyframes btn-animation {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* recent orders */
+.profile-page table.recent-orders {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  color: inherit;
+}
+
+.profile-page table.recent-orders thead tr {
+  background-color: var(--main-color);
+  color: inherit;
+  text-align: left;
+}
+
+.profile-page table.recent-orders th,
+.profile-page table.recent-orders td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.profile-page table.recent-orders tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.profile-page table.recent-orders tbody tr:last-of-type {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.profile-page table.recent-orders .pending {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
