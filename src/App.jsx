@@ -67,7 +67,7 @@ function App() {
               />
             </Route>
             <Route path="/compare" element={<ComparePage />} />
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/cart" element={<CartPage toast={handleToast} />} />
             <Route
               path="/profile"
               element={<ProfilePage toast={handleToast} />}

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./CartPage.css";
 import { Box, Button, Container, useTheme } from "@mui/material";
 import { CloseRounded, RemoveShoppingCartRounded } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ConfirmOrder from "./modal/ConfirmOrder";
+import axios from "axios";
 
-function CartPage() {
+function CartPage(props) {
   const theme = useTheme();
+  const nav = useNavigate();
 
   const [allPro, setAllPro] = useState([]);
+  const [addressOpen, setAddressOpen] = React.useState(false);
 
   useEffect(() => {
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -47,8 +51,68 @@ function CartPage() {
     setAllPro(pro);
   };
 
+  const handleAddPro = async (_) => {
+    let pro = JSON.parse(localStorage.getItem("products"));
+    let token =
+      sessionStorage.getItem("token") || localStorage.getItem("token");
+    let formData = new FormData();
+    let formData2 = new FormData();
+    let price = 0;
+
+    for (let i = 0; i < pro.length; i++) {
+      price += +pro[i].price * pro[i].quantity;
+    }
+
+    formData.append("u_id", token);
+    formData.append("t_price", price);
+
+    let res = await axios.post(
+      `${import.meta.env.VITE_API_HOST}/orders/NewOrder.php`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    if (res.data.status == 200) {
+      props.toast("success", "Order Placed Successfully");
+    }
+
+    for (let i = 0; i < pro.length; i++) {
+      formData2.append("img", pro[i].img);
+      formData2.append("name", pro[i].name);
+      formData2.append("desc", pro[i].desc);
+      formData2.append("price", pro[i].price);
+      formData2.append("quantity", pro[i].quantity);
+
+      await axios.post(
+        `${import.meta.env.VITE_API_HOST}/orders/AddOrderDetails.php`,
+        formData2,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+    }
+
+    setAddressOpen(false);
+
+    localStorage.removeItem("products");
+
+    setAllPro([]);
+    nav("/profile");
+  };
+
   return (
     <div className="cart-page">
+      <ConfirmOrder
+        open={addressOpen}
+        setOpen={setAddressOpen}
+        fn={handleAddPro}
+      />
       <Container
         className="cart-container"
         sx={{
@@ -132,11 +196,15 @@ function CartPage() {
           </Box>
 
           {allPro?.length > 0 && (
-            <Link to={"/"} className="continue-shopping">
-              <Button variant="contained" color="primary">
+            <a href="#" className="continue-shopping">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={(_) => setAddressOpen(true)}
+              >
                 continue shopping
               </Button>
-            </Link>
+            </a>
           )}
         </div>
       </Container>
