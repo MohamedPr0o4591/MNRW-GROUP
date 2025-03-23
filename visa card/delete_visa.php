@@ -12,7 +12,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($result) {
     $stmt = $conn->prepare(
-        "DELETE FROM `visa_cards` WHERE `u_id` = ?"
+        "UPDATE  `visa_cards` SET `c_number` = NULL , `ex_month` = NULL , `ex_year` = NULL , `cvv` = NULL , `c_holder` = NULL WHERE `u_id` = ?"
     );
 
     $stmt->execute([$tokenId]);
