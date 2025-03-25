@@ -1,4 +1,5 @@
 .navbar {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
@@ -104,4 +105,41 @@
 .navbar .account-btn:hover::after {
   height: 100%;
   transition: all 0.1s;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .navbar {
+    display: none;
+  }
+
+  .navbar-phones {
+    display: flex;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+
+  .navbar-phones .left-side {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .navbar-phones .openMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    height: 100vh;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
 }
