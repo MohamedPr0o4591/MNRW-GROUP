@@ -222,8 +222,6 @@ function EditProfile(props) {
           </div>
 
           <div className="input-container">
-            <Box flex={1} />
-
             <div className="input-box">
               <label>
                 Current Password to Confirm<span>*</span>

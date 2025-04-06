@@ -23,6 +23,7 @@
   padding: 50px 40px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 .registration form h2 {
@@ -34,8 +35,10 @@
 }
 
 .registration form .input-box {
+  width: 100%;
   position: relative;
   margin-top: 2rem;
+  z-index: 1;
 }
 
 .registration form .input-box input {
@@ -251,4 +254,10 @@ input.input-value:focus {
 }
 .show-password [id="beam"] {
   background: var(--beamColor);
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .registration .pass-box {
+    flex-direction: column;
+  }
 }

@@ -193,6 +193,7 @@ function ModifyProfile(props) {
         direction={"row"}
         alignItems={"center"}
         justifyContent={"space-between"}
+        className="main-info-container"
       >
         <Avatar
           sx={{ width: 100, height: 100 }}
@@ -321,51 +322,53 @@ function ModifyProfile(props) {
         fn={handleSubmit}
       />
 
-      <table className="recent-orders">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>img</th>
-            <th>name</th>
-            <th>quantity</th>
-            <th>status</th>
-          </tr>
-        </thead>
+      <div className="table">
+        <table className="recent-orders">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>img</th>
+              <th>name</th>
+              <th>quantity</th>
+              <th>status</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {ordersData?.length > 0
-            ? ordersData.map((data, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img
-                        src={`${import.meta.env.VITE_API_HOST}/upload/${
-                          data.img
-                        }`}
-                        alt={data.name}
-                      />
-                    </td>
-                    <td>{data.name}</td>
-                    <td>{data.quantity}</td>
-                    <td>
-                      {data.status == "pending" ? (
-                        <span className="pending" style={{ color: "tomato" }}>
-                          <AutorenewRounded />
-                          الطلب قيد المراجعة
-                        </span>
-                      ) : (
-                        <span className="pending" style={{ color: "green" }}>
-                          <VerifiedRounded />
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })
-            : null}
-        </tbody>
-      </table>
+          <tbody>
+            {ordersData?.length > 0
+              ? ordersData.map((data, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <img
+                          src={`${import.meta.env.VITE_API_HOST}/upload/${
+                            data.img
+                          }`}
+                          alt={data.name}
+                        />
+                      </td>
+                      <td>{data.name}</td>
+                      <td>{data.quantity}</td>
+                      <td>
+                        {data.status == "pending" ? (
+                          <span className="pending" style={{ color: "tomato" }}>
+                            <AutorenewRounded />
+                            الطلب قيد المراجعة
+                          </span>
+                        ) : (
+                          <span className="pending" style={{ color: "green" }}>
+                            <VerifiedRounded />
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              : null}
+          </tbody>
+        </table>
+      </div>
     </Container>
   );
 }

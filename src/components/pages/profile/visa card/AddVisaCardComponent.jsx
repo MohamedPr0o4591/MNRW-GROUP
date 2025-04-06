@@ -13,7 +13,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "60%",
+  width: "100%",
   minHeight: "550px",
   maxHeight: "80vh",
   bgcolor: "transparent",
@@ -51,6 +51,7 @@ function AddVisaCardComponent(props) {
               direction={"row"}
               alignItems={"center"}
               justifyContent={"space-between"}
+              className="card-title"
             >
               <h2>Add / Update Card</h2>
               <Box flex={1} />

@@ -84,3 +84,9 @@
   pointer-events: none;
   object-fit: cover;
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .compare .flex-box {
+    flex-direction: column;
+  }
+}

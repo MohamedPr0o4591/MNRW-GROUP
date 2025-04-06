@@ -71,6 +71,7 @@
 }
 
 .edit-profile button {
+  margin-top: 2rem;
   position: relative;
   padding: 10px 40px;
   border-radius: 10px;

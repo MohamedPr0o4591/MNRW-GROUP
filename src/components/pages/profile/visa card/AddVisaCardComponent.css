@@ -10,6 +10,7 @@
 }
 
 .container .card-info {
+  width: 450px;
   position: absolute;
   top: -50%;
   left: 50%;
@@ -58,4 +59,23 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 1;
   text-align: center;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    padding: 10px 20px;
+  }
+
+  .container .card-info {
+    top: -30%;
+  }
+
+  .card-info-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .card-title {
+    margin-top: 10rem;
+  }
 }

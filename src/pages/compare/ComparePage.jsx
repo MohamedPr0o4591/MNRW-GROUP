@@ -171,55 +171,57 @@ function ComparePage() {
           </Button>
         </form>
 
-        <table>
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>img</th>
-              <th>name</th>
-              <th>price</th>
-              <th>description</th>
-              <th>action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dataPreview?.length > 0 ? (
-              dataPreview.map((data, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img
-                        src={`${import.meta.env.VITE_API_HOST}/upload/${
-                          data.img
-                        }`}
-                        alt={data.name}
-                      />
-                    </td>
-                    <td>{data.name}</td>
-
-                    <td>{(+data.price).toLocaleString("en-us")}</td>
-                    <td>{data.desc}</td>
-                    <td>
-                      <IconButton
-                        color="error"
-                        onClick={(_) => handleDeleteItem(index)}
-                      >
-                        <DeleteRounded />
-                      </IconButton>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
+        <div className="table">
+          <table>
+            <thead>
               <tr>
-                <td colSpan={6} align="center">
-                  No Data
-                </td>
+                <th>id</th>
+                <th>img</th>
+                <th>name</th>
+                <th>price</th>
+                <th>description</th>
+                <th>action</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {dataPreview?.length > 0 ? (
+                dataPreview.map((data, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <img
+                          src={`${import.meta.env.VITE_API_HOST}/upload/${
+                            data.img
+                          }`}
+                          alt={data.name}
+                        />
+                      </td>
+                      <td>{data.name}</td>
+
+                      <td>{(+data.price).toLocaleString("en-us")}</td>
+                      <td>{data.desc}</td>
+                      <td>
+                        <IconButton
+                          color="error"
+                          onClick={(_) => handleDeleteItem(index)}
+                        >
+                          <DeleteRounded />
+                        </IconButton>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colSpan={6} align="center">
+                    No Data
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </Container>
     </section>
   );

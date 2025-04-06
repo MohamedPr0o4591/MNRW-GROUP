@@ -47,3 +47,8 @@ section {
   display: flex;
   flex-direction: column;
 }
+
+.table {
+  width: 100%;
+  overflow: auto;
+}

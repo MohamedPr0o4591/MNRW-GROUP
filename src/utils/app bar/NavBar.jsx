@@ -145,6 +145,65 @@ function NavBar(props) {
           >
             <i className="bx bx-x-circle"></i>
           </IconButton>
+
+          <div className="navigators-phones">
+            {Object.keys(profile_info)?.length > 0 && (
+              <IconButton
+                onClick={(_) => {
+                  nav("/profile");
+                  setOpenMenu(false);
+                }}
+              >
+                <Avatar
+                  src={`${import.meta.env.VITE_API_HOST}/upload/${
+                    profile_info.img_profile
+                  }`}
+                  sx={{ width: 100, height: 100 }}
+                />
+              </IconButton>
+            )}
+
+            {navigators.map((nav, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={nav.link}
+                  onClick={(_) => setOpenMenu(false)}
+                  className={` ${
+                    location.pathname == nav.link ? "active" : "navigator"
+                  }`}
+                  style={{
+                    color:
+                      location.pathname != nav.link
+                        ? props.themeStyle.palette.color.primary
+                        : "inherit",
+                    backgroundColor:
+                      location.pathname == nav.link
+                        ? theme.palette.background.paper
+                        : theme.palette.divider,
+                  }}
+                >
+                  {nav.name}
+                </Link>
+              );
+            })}
+
+            <Link
+              to={Object.keys(userData)?.length == 0 && "/registration"}
+              className="account-btn"
+              style={{
+                color: props.themeStyle.palette.color.primary,
+              }}
+              onClick={(_) => {
+                Object.keys(userData)?.length > 0 && handleLogOut();
+                setOpenMenu(false);
+              }}
+            >
+              {Object.keys(userData)?.length > 0
+                ? "logout"
+                : "have an account?"}
+            </Link>
+          </div>
         </div>
         <div className="left-side">
           <IconButton color="inherit" onClick={changeMode}>

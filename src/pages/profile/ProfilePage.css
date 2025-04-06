@@ -116,7 +116,7 @@
 
 .card-info {
   position: relative;
-  width: 450px;
+  max-width: 450px;
   height: 260px;
   margin: auto;
   border-radius: 10px;
@@ -360,4 +360,20 @@
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .main-info-container {
+    flex-direction: column !important;
+  }
+
+  .info {
+    width: 100%;
+    align-items: normal !important;
+  }
+
+  .card-info {
+    width: 90% !important;
+    height: 225px;
+  }
 }
