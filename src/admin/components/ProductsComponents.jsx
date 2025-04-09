@@ -219,65 +219,66 @@ function ProductsComponents(props) {
       {/* Show */}
       <div className="show-products">
         <h2>show products</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Img</th>
-              <th>Product Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Company</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {proData.length > 0 &&
-              proData.map((data, index) => {
-                return (
-                  <tr key={data.id}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img
-                        src={`${import.meta.env.VITE_API_HOST}/upload/${
-                          data.img
-                        }`}
-                        alt={data.name}
-                      />
-                    </td>
-                    <td>{data.name}</td>
-                    <td>{data.desc}</td>
-                    <td>{(+data.price)?.toLocaleString("en-US")}</td>
-                    <td>{data.category}</td>
-                    <td>{data.company}</td>
-                    <td>
-                      <Stack
-                        direction={"row"}
-                        alignItems={"center"}
-                        gap={1}
-                        className="action-btn"
-                      >
-                        <IconButton
-                          color="inherit"
-                          onClick={(_) => handleUpdate(data.id)}
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Img</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Company</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {proData.length > 0 &&
+                proData.map((data, index) => {
+                  return (
+                    <tr key={data.id}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <img
+                          src={`${import.meta.env.VITE_API_HOST}/upload/${data.img
+                            }`}
+                          alt={data.name}
+                        />
+                      </td>
+                      <td>{data.name}</td>
+                      <td>{data.desc}</td>
+                      <td>{(+data.price)?.toLocaleString("en-US")}</td>
+                      <td>{data.category}</td>
+                      <td>{data.company}</td>
+                      <td>
+                        <Stack
+                          direction={"row"}
+                          alignItems={"center"}
+                          gap={1}
+                          className="action-btn"
                         >
-                          update
-                        </IconButton>
+                          <IconButton
+                            color="inherit"
+                            onClick={(_) => handleUpdate(data.id)}
+                          >
+                            update
+                          </IconButton>
 
-                        <IconButton
-                          color="inherit"
-                          onClick={(_) => handleDelete(data.id)}
-                        >
-                          <DeleteRounded />
-                        </IconButton>
-                      </Stack>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+                          <IconButton
+                            color="inherit"
+                            onClick={(_) => handleDelete(data.id)}
+                          >
+                            <DeleteRounded />
+                          </IconButton>
+                        </Stack>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
