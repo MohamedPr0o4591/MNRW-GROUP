@@ -115,3 +115,9 @@
 .edit-profile button:active {
   transform: scale(0.98);
 }
+
+@media (min-width : 320px) and (max-width : 767px) {
+  .edit-profile .input-container .input-box {
+    width: 100%;
+  }
+}

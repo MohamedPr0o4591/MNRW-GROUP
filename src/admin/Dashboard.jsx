@@ -80,7 +80,7 @@ export default function Dashboard(props) {
 
         <DrawerBar open={open} handleDrawerClose={handleDrawerClose} />
 
-        <Main open={open}>
+        <Main open={open} className=" main-outlet " >
           <Outlet />
         </Main>
       </Box>

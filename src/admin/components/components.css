@@ -143,6 +143,7 @@
 }
 
 select {
+  width: 25vw;
   padding: 10px 20px;
   background-color: var(--main-color);
   border-radius: 15px;
@@ -211,5 +212,17 @@ table img {
   select,
   .search {
     width: 100%;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .category-component {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 24px);
+    margin: auto;
   }
 }

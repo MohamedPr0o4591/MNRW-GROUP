@@ -147,13 +147,13 @@ function ModifyProfile(props) {
 
       let res = await axios.post(
         `${import.meta.env.VITE_API_HOST}/visa card/upload_visa.php`,
-
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         }
+
       );
 
       if (res.data.status == 200) {
@@ -197,9 +197,8 @@ function ModifyProfile(props) {
       >
         <Avatar
           sx={{ width: 100, height: 100 }}
-          src={`${import.meta.env.VITE_API_HOST}/upload/${
-            props.userData.img_profile
-          }`}
+          src={`${import.meta.env.VITE_API_HOST}/upload/${props.userData.img_profile
+            }`}
         />
 
         <Box className="main-info">
@@ -249,7 +248,7 @@ function ModifyProfile(props) {
                 <span key={index} className="number">
                   <span>
                     {(visa_details?.c_number && index < 4) ||
-                    (visa_details?.c_number && index > 11)
+                      (visa_details?.c_number && index > 11)
                       ? visa_details?.c_number[index]
                       : "#"}
                   </span>
@@ -270,7 +269,7 @@ function ModifyProfile(props) {
               <p>
                 {visa_details?.c_holder
                   ? visa_details?.c_holder[0] + "****"
-                  : "John Doe"}
+                  : "--"}
               </p>
             </div>
             <div className="right-side">
@@ -337,34 +336,33 @@ function ModifyProfile(props) {
           <tbody>
             {ordersData?.length > 0
               ? ordersData.map((data, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <img
-                          src={`${import.meta.env.VITE_API_HOST}/upload/${
-                            data.img
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <img
+                        src={`${import.meta.env.VITE_API_HOST}/upload/${data.img
                           }`}
-                          alt={data.name}
-                        />
-                      </td>
-                      <td>{data.name}</td>
-                      <td>{data.quantity}</td>
-                      <td>
-                        {data.status == "pending" ? (
-                          <span className="pending" style={{ color: "tomato" }}>
-                            <AutorenewRounded />
-                            الطلب قيد المراجعة
-                          </span>
-                        ) : (
-                          <span className="pending" style={{ color: "green" }}>
-                            <VerifiedRounded />
-                          </span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })
+                        alt={data.name}
+                      />
+                    </td>
+                    <td>{data.name}</td>
+                    <td>{data.quantity}</td>
+                    <td>
+                      {data.status == "pending" ? (
+                        <span className="pending" style={{ color: "tomato" }}>
+                          <AutorenewRounded />
+                          الطلب قيد المراجعة
+                        </span>
+                      ) : (
+                        <span className="pending" style={{ color: "green" }}>
+                          <VerifiedRounded />
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })
               : null}
           </tbody>
         </table>

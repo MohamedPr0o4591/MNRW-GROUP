@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
 import { get_all_categories, get_pro } from "../../redux/action/actions";
+import { Stack } from "@mui/material";
 
 export default function HomePage(props) {
   const categoriesData = useSelector((state) => state.CATEGORIES.categories);
@@ -117,9 +118,15 @@ export default function HomePage(props) {
                                 <div className="content">
                                   <h4>{newData.name}</h4>
                                   <span>{newData.desc}</span>
+                                  <Stack direction={'row'} alignItems={'center'} justifyContent={"space-between"} >
                                   <p>
                                     ${(+newData.price).toLocaleString("en")}
                                   </p>
+
+                                  <a href="" target="_blank" className="more-details">
+                                    عرض التفاصيل
+                                  </a>
+                                  </Stack>
 
                                   <button
                                     onClick={(_) => handleAddPro(newData.id)}

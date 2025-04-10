@@ -58,6 +58,7 @@ function App() {
         <section>
           <Routes>
             <Route path="/" element={<HomePage toast={handleToast} />} />
+            <Route path="/product/view/:id" element={<HomePage />} />
             <Route path="/registration">
               <Route index element={<LoginPage toast={handleToast} />} />
               <Route

@@ -98,3 +98,8 @@
 .home-page .card > .content button:active {
   transform: scale(0.98);
 }
+
+.home-page .more-details {
+  font-size: 14px;
+  color: darkblue;
+}

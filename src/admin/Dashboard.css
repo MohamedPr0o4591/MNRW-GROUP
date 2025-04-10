@@ -1,0 +1,5 @@
+@media (min-width : 320px) and (max-width : 767px) {
+    .main-outlet {
+        padding: 24px 0 !important;
+    }
+}
