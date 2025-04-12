@@ -3,6 +3,7 @@ import {
   GET_ALLPRODUCTS,
   GET_CATEGORIES,
   GET_COMPANIES,
+  GET_MORE_DETAILS_PRO,
   GET_RECENT_ORDER,
   GET_VISA_CARDS_DETAILS,
   GETTOKENACCESS,
@@ -104,3 +105,15 @@ export const get_visa_details = (u_id) => {
     });
   };
 };
+
+export const get_moreDetails_pro = id => {
+  return async dispatch => {
+    let res = await axios.get(`${apiHost}/products/more_detailsPro.php?pro_id=${id}`);
+    dispatch(
+      {
+        type: GET_MORE_DETAILS_PRO,
+        payload: res.data.data,
+      }
+    );
+  }
+}

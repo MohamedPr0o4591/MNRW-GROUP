@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CartPage.css";
 import { Box, Button, Container, useTheme } from "@mui/material";
-import { CloseRounded, RemoveShoppingCartRounded } from "@mui/icons-material";
+import { AddRounded, CloseRounded, RemoveRounded, RemoveShoppingCartRounded } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import ConfirmOrder from "./modal/ConfirmOrder";
 import axios from "axios";
@@ -150,16 +150,16 @@ function CartPage(props) {
 
                     <div className="buttons-box">
                       <button
-                        className="minus"
+                        // className="minus"
                         onClick={(_) => handleDecrement(index)}
                       >
-                        -
+                        <RemoveRounded />
                       </button>
                       <button
-                        className="add"
+                        // className="add"
                         onClick={(_) => handleIncrement(index)}
                       >
-                        +
+                        <AddRounded />
                       </button>
                       <button onClick={(_) => handleDeleteItem(index)}>
                         <CloseRounded />

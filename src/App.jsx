@@ -17,6 +17,7 @@ import ProductsComponents from "./admin/components/ProductsComponents";
 import CartPage from "./pages/cart/CartPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import EditProfile from "./pages/profile/edit profile/EditProfile";
+import ProductView from "./pages/product view/ProductView";
 
 function App() {
   const [mode, setMode] = React.useState(
@@ -58,7 +59,7 @@ function App() {
         <section>
           <Routes>
             <Route path="/" element={<HomePage toast={handleToast} />} />
-            <Route path="/product/view/:id" element={<HomePage />} />
+            <Route path="/product/view/:id" element={<ProductView />} />
             <Route path="/registration">
               <Route index element={<LoginPage toast={handleToast} />} />
               <Route

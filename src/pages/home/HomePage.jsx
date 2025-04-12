@@ -123,7 +123,7 @@ export default function HomePage(props) {
                                     ${(+newData.price).toLocaleString("en")}
                                   </p>
 
-                                  <a href="" target="_blank" className="more-details">
+                                  <a href={`/product/view/${newData.id}`} target="_blank" className="more-details">
                                     عرض التفاصيل
                                   </a>
                                   </Stack>
