@@ -24,7 +24,9 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql1 = "CREATE TABLE IF NOT EXISTS `users` (
+    $sql = [];
+
+    $sql[] = "CREATE TABLE IF NOT EXISTS `users` (
        `id` varchar(100) NULL PRIMARY KEY,
        `username` varchar(100) NULL,
        `password` varchar(100) NULL ,
@@ -33,25 +35,22 @@ try {
        `status` varchar(100) NULL 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql1);
 
-    $sql2 = "CREATE TABLE IF NOT EXISTS `categories` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `categories` (
         `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT ,
         `category` varchar(100) NOT NULL 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql2);
 
-    $sql3 = "CREATE TABLE IF NOT EXISTS `companies` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `companies` (
         `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         `company` varchar(100) NOT NULL ,
         `c_id` int(11) NOT NULL ,
         FOREIGN KEY (`c_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql3);
 
-    $sql4 = "CREATE TABLE IF NOT EXISTS `profile_info` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `profile_info` (
         `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         `f_name` varchar(100) NULL ,
         `l_name` varchar(100) NULL ,
@@ -62,9 +61,8 @@ try {
         FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql4);
 
-    $sql5 = "CREATE TABLE IF NOT EXISTS `products` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `products` (
         `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         `name` varchar(100) NULL ,
         `price` varchar(100) NULL ,
@@ -74,9 +72,8 @@ try {
         FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql5);
 
-    $sql6 = "CREATE TABLE IF NOT EXISTS `visa_cards` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `visa_cards` (
         `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         `c_number` varchar(100)  NULL , 
         `ex_month` varchar(100)  NULL ,
@@ -88,9 +85,8 @@ try {
         FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-    $conn->exec($sql6);
 
-    $sql7 = "CREATE TABLE IF NOT EXISTS `orders` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `orders` (
         `id` int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY ,
         `u_id` varchar(100) NOT NULL ,
         `date` varchar(100) NOT NULL ,
@@ -99,9 +95,8 @@ try {
         FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ";
 
-    $conn->exec($sql7);
 
-    $sql8 = "CREATE TABLE IF NOT EXISTS `order_details` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `order_details` (
         `id` int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY ,
         `o_id` int(11) NOT NULL ,
         `quantity` int(11) NOT NULL ,
@@ -112,9 +107,15 @@ try {
         FOREIGN KEY (`o_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ";
 
-    $conn->exec($sql8);
+
+    if (!empty($sql)) {
+        foreach ($sql as $query) {
+            $conn->exec(($query));
+        }
+    }
 
     include('../actions.php');
 } catch (PDOException $e) {
     echo "" . $e->getMessage();
 }
+$conn->exec("SET NAMES 'utf8'");
