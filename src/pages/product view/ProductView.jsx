@@ -9,7 +9,6 @@ import MemoryRoundedIcon from '@mui/icons-material/MemoryRounded';
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import TvRoundedIcon from '@mui/icons-material/TvRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import Battery50RoundedIcon from '@mui/icons-material/Battery50Rounded';
 import StorageRoundedIcon from '@mui/icons-material/StorageRounded';
 
 function ProductView() {
