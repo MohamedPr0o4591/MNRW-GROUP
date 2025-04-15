@@ -204,6 +204,34 @@ table img {
   font-size: 1rem;
 }
 
+.component-details .upload-box,
+.component-details .input-box {
+  float: left;
+  margin-right: 20px;
+}
+
+.component-details .input-box {
+  margin-top: 5px;
+}
+
+.input-textarea {
+  width: 100%;
+  float: left;
+  margin-top: 2rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--main-color);
+  background-color: transparent;
+  color: inherit;
+  font-size: 1rem;
+  resize: none;
+  direction: rtl;
+}
+
 @media (min-width : 320px) and (max-width : 767px) {
   .category-component .input-box {
     width: 100%;

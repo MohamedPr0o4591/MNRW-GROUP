@@ -3,7 +3,7 @@ import "./components.css";
 import { useDispatch, useSelector } from "react-redux";
 import { get_companies, get_pro } from "../../redux/action/actions";
 import axios from "axios";
-import { IconButton, Stack } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import { DeleteRounded } from "@mui/icons-material";
 
 function ProductsComponents(props) {
@@ -188,22 +188,71 @@ function ProductsComponents(props) {
           </div>
         </div>
 
-        <div className="upload-box">
-          <label htmlFor="upload">
-            {imgReader ? (
-              <img src={imgReader} alt="" />
-            ) : (
-              <span>Upload Product Image</span>
-            )}
-          </label>
-          <input
-            type="file"
-            name="img"
-            id="upload"
-            required
-            onChange={uploadImg}
-          />
+        <Box className="component-details" >
+          <div className="upload-box">
+            <label htmlFor="upload">
+              {imgReader ? (
+                <img src={imgReader} alt="" />
+              ) : (
+                <span>Upload Product Image</span>
+              )}
+            </label>
+            <input
+              type="file"
+              name="img"
+              id="upload"
+              required
+              onChange={uploadImg}
+            />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="ram">Ram</label>
+            <input type="number" name="" id="ram" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="hard">Hard Storage</label>
+            <input type="number" name="" id="hard" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="pros">Processor</label>
+            <input type="text" name="" id="pros" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="bat">Battery</label>
+            <input type="text" name="" id="bat" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="system_info">System Info</label>
+            <input type="text" name="" id="system_info" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="cam">Camera Details</label>
+            <input type="text" name="" id="cam" />
+          </div>
+
+          <div className="input-box">
+            <label htmlFor="d_details">Display Details</label>
+            <input type="text" name="" id="d_details" />
+          </div>
+
+        </Box>
+
+        <div className="input-textarea">
+          <label htmlFor="good_de">Good Details</label>
+          <textarea name="" id="good_de" rows={5}></textarea>
         </div>
+
+        <div className="input-textarea">
+          <label htmlFor="bad_de">Bad Details</label>
+          <textarea name="" id="bad_de" rows={5}></textarea>
+        </div>
+
 
         <input
           type="submit"

@@ -37,7 +37,7 @@
 }
 
 .cart-page .show-products,
-.cart-page .show-products > div {
+.cart-page .show-products>div {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -98,7 +98,6 @@
 .cart-page .continue-shopping {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
 }
 
 .cart-page .buttons-box {

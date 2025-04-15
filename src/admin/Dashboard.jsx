@@ -8,6 +8,7 @@ import DrawerBar from "./drawer/DrawerBar";
 import { Outlet, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { get_userdata_token } from "../redux/action/actions";
+import { Container } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -81,7 +82,9 @@ export default function Dashboard(props) {
         <DrawerBar open={open} handleDrawerClose={handleDrawerClose} />
 
         <Main open={open} className=" main-outlet " >
-          <Outlet />
+          <Container >
+            <Outlet />
+          </Container>
         </Main>
       </Box>
     </div>
