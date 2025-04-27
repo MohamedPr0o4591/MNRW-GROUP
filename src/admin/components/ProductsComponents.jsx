@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./components.css";
 import { useDispatch, useSelector } from "react-redux";
-import { get_companies, get_pro } from "../../redux/action/actions";
+import { get_companies, get_moreDetails_pro, get_pro } from "../../redux/action/actions";
 import axios from "axios";
 import { Box, IconButton, Stack } from "@mui/material";
 import { DeleteRounded } from "@mui/icons-material";
@@ -9,6 +9,7 @@ import { DeleteRounded } from "@mui/icons-material";
 function ProductsComponents(props) {
   let proData = useSelector((state) => state.GET_PRODUCTS.pro);
   let companies = useSelector((state) => state.GET_COMPANIES.companies);
+  let moreProDetails = useSelector(state => state.GET_MORE_DETAILS_PRO.pro);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -22,13 +23,41 @@ function ProductsComponents(props) {
   const [imgReader, setImgReader] = useState();
   const [imgFile, setImgFile] = useState();
 
+  React.useEffect(() => {
+    setProDetails({
+      ram: moreProDetails.ram,
+      hard: moreProDetails.hard,
+      proccessor: moreProDetails.procss,
+      screen: moreProDetails.display,
+      camera: moreProDetails.camireaa,
+      battery: moreProDetails.battry,
+      system_info: moreProDetails.system_info,
+      good_details: moreProDetails.good_de,
+      bad_details: moreProDetails.bad_de,
+    })
+  }, [moreProDetails]);
+
   const initialPro = {
     p_name: "",
     p_desc: "",
     p_price: "",
     p_id: null,
   };
+
+  const initialDetails = {
+    ram: "",
+    hard: "",
+    proccessor: "",
+    screen: "",
+    camera: "",
+    battery: "",
+    system_info: "",
+    good_details: "",
+    bad_details: ""
+  }
+
   const [ProductInfo, setProductInfo] = useState(initialPro);
+  const [proDetails, setProDetails] = useState(initialDetails);
 
   const uploadImg = (e) => {
     const file = e.target.files[0];
@@ -54,6 +83,15 @@ function ProductsComponents(props) {
       formData.append("desc", ProductInfo.p_desc);
       formData.append("price", ProductInfo.p_price);
       formData.append("company_id", companyId);
+      formData.append("ram", proDetails.ram);
+      formData.append("hard", proDetails.hard);
+      formData.append("processor", proDetails.proccessor);
+      formData.append("screen", proDetails.screen);
+      formData.append("camera", proDetails.camera);
+      formData.append("battery", proDetails.battery);
+      formData.append("system_info", proDetails.system_info);
+      formData.append("good_de", proDetails.good_details);
+      formData.append("bad_de", proDetails.bad_details);
 
       let res = await axios.post(
         `${import.meta.env.VITE_API_HOST}/products/upload_pro.php`,
@@ -75,6 +113,15 @@ function ProductsComponents(props) {
       formData.append("price", ProductInfo.p_price);
       formData.append("desc", ProductInfo.p_desc);
       formData.append("company_id", companyId);
+      formData.append("ram", proDetails.ram);
+      formData.append("hard", proDetails.hard);
+      formData.append("processor", proDetails.proccessor);
+      formData.append("screen", proDetails.screen);
+      formData.append("camera", proDetails.camera);
+      formData.append("battery", proDetails.battery);
+      formData.append("system_info", proDetails.system_info);
+      formData.append("good_de", proDetails.good_details);
+      formData.append("bad_de", proDetails.bad_details);
 
       await axios.post(
         `${import.meta.env.VITE_API_HOST}/products/edit_pro.php`,
@@ -91,6 +138,8 @@ function ProductsComponents(props) {
     }
 
     setProductInfo(initialPro);
+    setProDetails(initialDetails);
+    setCompanyId(0);
     setImgFile(null);
     setImgReader(null);
     dispatch(get_pro());
@@ -109,7 +158,7 @@ function ProductsComponents(props) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleUpdate = (id) => {
+  const handleUpdate = async (id) => {
     let filtered = proData.find((data) => data.id == id);
     setProductInfo({
       p_name: filtered.name,
@@ -117,6 +166,8 @@ function ProductsComponents(props) {
       p_price: filtered.price,
       p_id: filtered.id,
     });
+
+    await dispatch(get_moreDetails_pro(id));
 
     setImgReader(`${import.meta.env.VITE_API_HOST}/upload/${filtered.img}`);
     setImgFile(filtered.img);
@@ -208,49 +259,49 @@ function ProductsComponents(props) {
 
           <div className="input-box">
             <label htmlFor="ram">Ram</label>
-            <input type="number" name="" id="ram" />
+            <input type="number" name="" id="ram" value={proDetails.ram} onChange={e => setProDetails({ ...proDetails, ram: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="hard">Hard Storage</label>
-            <input type="number" name="" id="hard" />
+            <input type="number" name="" id="hard" value={proDetails.hard} onChange={e => setProDetails({ ...proDetails, hard: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="pros">Processor</label>
-            <input type="text" name="" id="pros" />
+            <input type="text" name="" id="pros" value={proDetails.proccessor} onChange={e => setProDetails({ ...proDetails, proccessor: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="bat">Battery</label>
-            <input type="text" name="" id="bat" />
+            <input type="text" name="" id="bat" value={proDetails.battery} onChange={e => setProDetails({ ...proDetails, battery: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="system_info">System Info</label>
-            <input type="text" name="" id="system_info" />
+            <input type="text" name="" id="system_info" value={proDetails.screen} onChange={e => setProDetails({ ...proDetails, screen: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="cam">Camera Details</label>
-            <input type="text" name="" id="cam" />
+            <input type="text" name="" id="cam" value={proDetails.camera} onChange={e => setProDetails({ ...proDetails, camera: e.target.value })} />
           </div>
 
           <div className="input-box">
             <label htmlFor="d_details">Display Details</label>
-            <input type="text" name="" id="d_details" />
+            <input type="text" name="" id="d_details" value={proDetails.system_info} onChange={e => setProDetails({ ...proDetails, system_info: e.target.value })} />
           </div>
 
         </Box>
 
         <div className="input-textarea">
           <label htmlFor="good_de">Good Details</label>
-          <textarea name="" id="good_de" rows={5}></textarea>
+          <textarea name="" id="good_de" rows={5} value={proDetails.good_details} onChange={e => setProDetails({ ...proDetails, good_details: e.target.value })} ></textarea>
         </div>
 
         <div className="input-textarea">
           <label htmlFor="bad_de">Bad Details</label>
-          <textarea name="" id="bad_de" rows={5}></textarea>
+          <textarea name="" id="bad_de" rows={5} value={proDetails.bad_details} onChange={e => setProDetails({ ...proDetails, bad_details: e.target.value })}></textarea>
         </div>
 
 
