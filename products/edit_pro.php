@@ -9,6 +9,16 @@ $company_id = isset($_POST["company_id"]) ? filterReq("company_id") : null;
 $img = isset($_FILES["img"]) ? uploadFile("img") : null;
 $id = filterReq("id");
 
+$ram = filterReq(("ram"));
+$hard = filterReq(("hard"));
+$processor = filterReq("processor");
+$screen = filterReq("screen");
+$camera = filterReq("camera");
+$battery = filterReq("battery");
+$system_info = filterReq("system_info");
+$good_de = filterReq(("good_de"));
+$bad_de = filterReq(("bad_de"));
+
 $fields = [];
 $params = [];
 
@@ -63,13 +73,42 @@ if (!empty($fields)) {
 
     $count = $stmt->rowCount();
     if ($count > 0) {
-        http_response_code(200);
-        echo json_encode(
+
+        $stmt = $conn->prepare(
+            " UPDATE `info_product` SET `ram` = ? , `hard` =?, `procss` =?, `display` =?, `camireaa` =?, `battry` =?, `system_info` =?, `good_de` =?, `bad_de` =? WHERE `product_id` = $id "
+        );
+        $stmt->execute(
             [
-                "status" => 200,
-                "message" => "Product updated successfully"
+                $ram,
+                $hard,
+                $processor,
+                $screen,
+                $camera,
+                $battery,
+                $system_info,
+                $good_de,
+                $bad_de,
             ]
         );
+
+        $count = $stmt->rowCount();
+        if ($count > 0) {
+            http_response_code(200);
+            echo json_encode(
+                [
+                    "status" => 200,
+                    "message" => "Product updated successfully"
+                ]
+            );
+        } else {
+            http_response_code(400);
+            echo json_encode(
+                [
+                    "status" => 400,
+                    "message" => "Product not updated"
+                ]
+            );
+        }
     } else {
         http_response_code(400);
         echo json_encode(
