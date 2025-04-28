@@ -140,6 +140,16 @@
   outline: none;
   color: var(--color-white);
   width: 25%;
+  border: 1px solid var(--main-color);
+  font-size: 1rem;
+}
+
+.search::placeholder {
+  color: var(--color-white);
+}
+
+.search:focus {
+  border: 1px solid var(--main-color);
 }
 
 select {

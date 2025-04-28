@@ -211,7 +211,7 @@ function CartPage(props) {
             {
               totalPrice > 0 && (
                 <div className="total-price">
-                  <span>Total Price ${totalPrice.toLocaleString("US-en")} </span>
+                  <span>Total Price ${totalPrice.toLocaleString("en-US")} </span>
                 </div>
               )
             }

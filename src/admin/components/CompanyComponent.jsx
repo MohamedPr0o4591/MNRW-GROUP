@@ -140,6 +140,8 @@ function CompanyComponent(props) {
         <input
           type="submit"
           value={mode == "create" ? "Add Company" : "Update"}
+          style={{ color: "#efef" }}
+
         />
       </form>
 
@@ -155,7 +157,9 @@ function CompanyComponent(props) {
 
       <table>
         <thead>
-          <tr>
+          <tr
+            style={{ color: "#efef" }}
+          >
             <th>Company Name</th>
             <th>Category</th>
             <th>Update</th>

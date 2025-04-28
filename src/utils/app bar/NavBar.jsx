@@ -57,7 +57,7 @@ function NavBar(props) {
       <div
         className="navbar"
         style={{
-          backgroundColor: props.themeStyle.palette.background.default,
+          background: props.themeStyle.palette.background.default,
           color: props.themeStyle.palette.color.primary,
           boxShadow: `0 2px 4px ${props.themeStyle.palette.color.shadows}`,
           display: location.pathname.includes("admin") ? "none" : "",

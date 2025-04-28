@@ -77,6 +77,7 @@ export default function Dashboard(props) {
           open={open}
           handleDrawerOpen={handleDrawerOpen}
           setMode={props.setMode}
+          systemTheme={props.systemTheme}
         />
 
         <DrawerBar open={open} handleDrawerClose={handleDrawerClose} />

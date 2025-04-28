@@ -41,7 +41,7 @@ function ProductView() {
         </strong>
       </Stack>
 
-      <Stack direction={"row"} alignItems={"center"} gap={2} >
+      <Stack direction={"row"} alignItems={"center"} gap={2} className='details-container' >
         <div className="img-box">
           <img src={`${import.meta.env.VITE_API_HOST}/upload/${proDetails.img}`} alt={proDetails.name} title={proDetails.name} />
         </div>

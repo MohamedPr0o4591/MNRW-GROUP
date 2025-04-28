@@ -39,7 +39,7 @@ function TopBar(props) {
   let theme = useTheme();
 
   return (
-    <AppBar position="fixed" open={props.open}>
+    <AppBar position="fixed" open={props.open} sx={{ backgroundColor: props.systemTheme.palette.background.navbar }}>
       <Toolbar>
         <IconButton
           color="inherit"

@@ -75,7 +75,7 @@ function CategoryComponent(props) {
   };
 
   return (
-    <div className="category-component">
+    <div className="category-component" >
       <h2>Add New Category</h2>
 
       <form onSubmit={handleSubmit}>
@@ -93,6 +93,7 @@ function CategoryComponent(props) {
         <input
           type="submit"
           value={mode == "create" ? "Add Category" : "Update"}
+          style={{ color: "#efef" }}
         />
       </form>
 
@@ -102,7 +103,9 @@ function CategoryComponent(props) {
 
       <table>
         <thead>
-          <tr>
+          <tr
+            style={{ color: "#efef" }}
+          >
             <th>Category Name</th>
             <th>Update</th>
             <th>Delete</th>

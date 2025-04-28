@@ -84,7 +84,7 @@ function App() {
             />
 
             {/* Admin page */}
-            <Route path="/admin" element={<Dashboard setMode={setMode} />}>
+            <Route path="/admin" element={<Dashboard setMode={setMode} systemTheme={theme} />}>
               <Route
                 path="products"
                 element={<ProductsComponents toast={handleToast} />}

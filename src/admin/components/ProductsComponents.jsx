@@ -310,6 +310,7 @@ function ProductsComponents(props) {
           value={`${mode == "create" ? "Add Product" : "Update"}`}
           style={{
             backgroundColor: mode == "create" ? "" : "#0a0",
+            color: "#efef",
           }}
         />
       </form>
@@ -322,7 +323,9 @@ function ProductsComponents(props) {
         <div className="table">
           <table>
             <thead>
-              <tr>
+              <tr
+                style={{ color: "#efef" }}
+              >
                 <th>Id</th>
                 <th>Img</th>
                 <th>Product Name</th>
